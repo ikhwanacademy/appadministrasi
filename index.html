@@ -1,718 +1,1026 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>IM CREATIVE VISUAL - Finance App</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>
+IM CREATIVE VISUAL - Finance Dashboard
+</title>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
+/* =========================
+GLOBAL
+========================= */
+
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-  background:#f4f7fb;
-  color:#1e293b;
+background:#f1f5f9;
+color:#0f172a;
+overflow-x:hidden;
 }
 
-/* HEADER */
+/* =========================
+HEADER
+========================= */
 
 .hero{
 
-  position:relative;
-  width:100%;
-  min-height:340px;
+position:relative;
 
-  background:
-  linear-gradient(
-  rgba(4,8,24,0.82),
-  rgba(4,8,24,0.88)),
-  url('1000490502.jpg');
+width:100%;
 
-  background-size:cover;
-  background-position:center;
+min-height:340px;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+background:
+linear-gradient(
+rgba(2,6,23,0.88),
+rgba(15,23,42,0.92)
+),
 
-  overflow:hidden;
+url('1000490502.jpg');
+
+background-size:cover;
+background-position:center;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+padding:30px;
 }
 
 .hero-content{
-  width:100%;
-  max-width:1300px;
-  padding:30px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:20px;
+
+width:100%;
+max-width:1350px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+flex-wrap:wrap;
+
 }
 
 .brand{
-  display:flex;
-  align-items:center;
-  gap:18px;
+display:flex;
+align-items:center;
+gap:20px;
 }
 
 .brand img{
-  width:90px;
-  height:90px;
-  object-fit:contain;
-  background:white;
-  border-radius:24px;
-  padding:10px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.25);
+
+width:90px;
+height:90px;
+
+object-fit:cover;
+
+border-radius:24px;
+
+background:white;
+
+padding:10px;
+
+box-shadow:
+0 15px 40px rgba(0,0,0,0.25);
+
 }
 
 .brand-text h1{
-  color:white;
-  font-size:38px;
-  font-weight:700;
-  margin-bottom:5px;
+
+font-size:40px;
+font-weight:700;
+color:white;
+
+margin-bottom:6px;
+
 }
 
 .brand-text p{
-  color:#cbd5e1;
-  font-size:16px;
+color:#cbd5e1;
+font-size:16px;
 }
 
 .header-right{
 
-  background:rgba(255,255,255,0.08);
-  backdrop-filter:blur(10px);
+background:rgba(255,255,255,0.08);
 
-  padding:18px 24px;
+padding:20px;
 
-  border-radius:20px;
-  color:white;
-  border:1px solid rgba(255,255,255,0.1);
+border-radius:24px;
+
+backdrop-filter:blur(14px);
+
+border:1px solid rgba(255,255,255,0.1);
+
+min-width:280px;
 }
 
-.header-right h3{
-  font-size:15px;
-  font-weight:500;
-  color:#dbeafe;
+.live-date{
+display:flex;
+flex-direction:column;
+gap:12px;
+margin-bottom:12px;
+}
+
+.date-box,
+.time-box{
+
+background:rgba(255,255,255,0.08);
+
+padding:12px 16px;
+
+border-radius:16px;
+
+color:white;
+
+font-size:14px;
+font-weight:600;
+
 }
 
 .header-right span{
-  font-size:14px;
-  color:#cbd5e1;
+color:#cbd5e1;
+font-size:13px;
 }
 
-/* MAIN */
+/* =========================
+MAIN
+========================= */
 
 main{
-  max-width:1300px;
-  margin:auto;
-  margin-top:-80px;
-  position:relative;
-  z-index:10;
-  padding:20px;
+
+max-width:1350px;
+
+margin:auto;
+
+margin-top:-70px;
+
+position:relative;
+z-index:20;
+
+padding:20px;
+
 }
+
+/* =========================
+CARD
+========================= */
 
 .card{
 
-  background:white;
-  border-radius:24px;
-  padding:28px;
-  margin-bottom:25px;
+background:white;
 
-  box-shadow:
-  0 10px 30px rgba(15,23,42,0.06);
+padding:28px;
 
-  border:1px solid #edf2f7;
+border-radius:28px;
+
+margin-bottom:24px;
+
+border:1px solid #e2e8f0;
+
+box-shadow:
+0 10px 40px rgba(15,23,42,0.05);
+
 }
 
 .section-title{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:22px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+margin-bottom:24px;
+
+flex-wrap:wrap;
+gap:15px;
+
 }
 
 .section-title h2{
-  font-size:24px;
-  color:#0f172a;
+font-size:28px;
+font-weight:700;
 }
 
 .badge{
-  background:#ede9fe;
-  color:#6d28d9;
-  padding:8px 15px;
-  border-radius:12px;
-  font-size:13px;
-  font-weight:600;
+
+background:#ede9fe;
+
+color:#7c3aed;
+
+padding:10px 16px;
+
+border-radius:14px;
+
+font-size:13px;
+font-weight:600;
 }
 
-/* FORM */
+/* =========================
+FORM
+========================= */
 
 .form-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:18px;
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+
+gap:18px;
 }
 
 .input-group{
-  display:flex;
-  flex-direction:column;
-  gap:8px;
+display:flex;
+flex-direction:column;
+gap:8px;
 }
 
 .input-group label{
-  font-size:14px;
-  color:#475569;
-  font-weight:500;
+
+font-size:14px;
+font-weight:600;
+
+color:#475569;
 }
 
 input,
 select{
 
-  width:100%;
-  padding:14px 16px;
+width:100%;
 
-  border-radius:14px;
-  border:1px solid #dbe4f0;
+padding:15px 16px;
 
-  background:#f8fafc;
+border-radius:16px;
 
-  font-size:15px;
-  transition:0.3s;
+border:1px solid #dbe4f0;
+
+background:#f8fafc;
+
+font-size:15px;
+
+transition:0.3s;
 }
 
 input:focus,
 select:focus{
-  outline:none;
-  border-color:#7c3aed;
-  background:white;
-  box-shadow:0 0 0 4px rgba(124,58,237,0.12);
+
+outline:none;
+
+border-color:#7c3aed;
+
+background:white;
+
+box-shadow:
+0 0 0 4px rgba(124,58,237,0.12);
+
 }
 
 .save-btn{
 
-  width:100%;
-  padding:15px;
+width:100%;
 
-  border:none;
-  border-radius:16px;
+padding:16px;
 
-  background:
-  linear-gradient(
-  135deg,
-  #0f172a,
-  #1d4ed8);
+border:none;
 
-  color:white;
-  font-size:15px;
-  font-weight:600;
+border-radius:18px;
 
-  cursor:pointer;
-  transition:0.3s;
+background:
+linear-gradient(
+135deg,
+#0f172a,
+#1d4ed8);
+
+color:white;
+
+font-size:15px;
+font-weight:600;
+
+cursor:pointer;
+
+transition:0.3s;
 }
 
 .save-btn:hover{
-  transform:translateY(-2px);
+transform:translateY(-3px);
 }
 
-/* SUMMARY */
+/* =========================
+SUMMARY
+========================= */
 
 .summary-grid{
 
-  display:grid;
-  grid-template-columns:
-  repeat(auto-fit,minmax(220px,1fr));
+display:grid;
 
-  gap:20px;
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+
+gap:20px;
 }
 
 .summary-card{
 
-  position:relative;
-  overflow:hidden;
+background:white;
 
-  background:white;
+padding:25px;
 
-  border-radius:22px;
-  padding:25px;
+border-radius:24px;
 
-  border:1px solid #edf2f7;
+border:1px solid #edf2f7;
 
-  box-shadow:
-  0 10px 25px rgba(0,0,0,0.04);
+box-shadow:
+0 8px 30px rgba(0,0,0,0.04);
 
-  transition:0.3s;
+transition:0.3s;
 }
 
 .summary-card:hover{
-  transform:translateY(-5px);
+transform:translateY(-5px);
 }
 
 .summary-icon{
 
-  width:58px;
-  height:58px;
+width:60px;
+height:60px;
 
-  border-radius:18px;
+border-radius:18px;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+display:flex;
+align-items:center;
+justify-content:center;
 
-  margin-bottom:18px;
+font-size:28px;
 
-  font-size:25px;
+margin-bottom:18px;
 }
 
 .green{
-  background:#dcfce7;
-  color:#16a34a;
+background:#dcfce7;
+color:#16a34a;
 }
 
 .red{
-  background:#fee2e2;
-  color:#dc2626;
+background:#fee2e2;
+color:#dc2626;
 }
 
 .blue{
-  background:#dbeafe;
-  color:#2563eb;
+background:#dbeafe;
+color:#2563eb;
 }
 
 .purple{
-  background:#ede9fe;
-  color:#7c3aed;
+background:#ede9fe;
+color:#7c3aed;
 }
 
 .orange{
-  background:#ffedd5;
-  color:#ea580c;
+background:#ffedd5;
+color:#ea580c;
 }
 
 .summary-card h3{
-  font-size:15px;
-  color:#64748b;
-  margin-bottom:10px;
+font-size:15px;
+color:#64748b;
+margin-bottom:10px;
 }
 
 .summary-card p{
-  font-size:28px;
-  font-weight:700;
-  color:#0f172a;
+
+font-size:30px;
+font-weight:700;
+
+color:#0f172a;
 }
 
-/* CHART */
+/* =========================
+CHART
+========================= */
 
 .chart-box{
-  height:420px;
+height:420px;
 }
 
-/* TABLE */
+/* =========================
+TABLE
+========================= */
 
 .table-container{
-  overflow:auto;
+overflow:auto;
 }
 
 table{
-  width:100%;
-  border-collapse:collapse;
+width:100%;
+border-collapse:collapse;
 }
 
 thead{
-  background:
-  linear-gradient(
-  135deg,
-  #0f172a,
-  #1e3a8a);
+
+background:
+linear-gradient(
+135deg,
+#0f172a,
+#1e3a8a);
+
 }
 
 th{
-  color:white;
-  padding:16px;
-  text-align:left;
-  font-size:14px;
+
+padding:16px;
+
+color:white;
+
+font-size:14px;
+
+text-align:left;
 }
 
 td{
-  padding:16px;
-  border-bottom:1px solid #edf2f7;
-  font-size:14px;
+
+padding:16px;
+
+border-bottom:1px solid #edf2f7;
+
+font-size:14px;
 }
 
 tbody tr:hover{
-  background:#f8fafc;
+background:#f8fafc;
 }
 
 .badge-income{
-  background:#dcfce7;
-  color:#16a34a;
-  padding:6px 12px;
-  border-radius:10px;
-  font-size:12px;
-  font-weight:600;
+
+background:#dcfce7;
+
+color:#16a34a;
+
+padding:6px 12px;
+
+border-radius:10px;
+
+font-size:12px;
+font-weight:600;
 }
 
 .badge-expense{
-  background:#fee2e2;
-  color:#dc2626;
-  padding:6px 12px;
-  border-radius:10px;
-  font-size:12px;
-  font-weight:600;
+
+background:#fee2e2;
+
+color:#dc2626;
+
+padding:6px 12px;
+
+border-radius:10px;
+
+font-size:12px;
+font-weight:600;
 }
 
-/* EXPORT */
+/* =========================
+EXPORT
+========================= */
 
 .export-box{
 
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+gap:20px;
+flex-wrap:wrap;
 }
 
 .export-box p{
-  color:#64748b;
+color:#64748b;
 }
 
 .wa-btn{
 
-  padding:16px 24px;
+padding:16px 24px;
 
-  border:none;
-  border-radius:18px;
+border:none;
 
-  background:
-  linear-gradient(
-  135deg,
-  #0f172a,
-  #111827);
+border-radius:18px;
 
-  color:white;
-  font-weight:600;
-  cursor:pointer;
+background:
+linear-gradient(
+135deg,
+#0f172a,
+#111827);
+
+color:white;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:0.3s;
 }
 
-/* FOOTER */
+.wa-btn:hover{
+transform:translateY(-3px);
+}
+
+/* =========================
+FOOTER
+========================= */
 
 footer{
 
-  margin-top:40px;
+margin-top:40px;
 
-  background:
-  linear-gradient(
-  135deg,
-  #020617,
-  #0f172a);
+background:
+linear-gradient(
+135deg,
+#020617,
+#0f172a);
 
-  color:white;
+padding:50px 20px;
 
-  text-align:center;
-  padding:40px 20px;
+text-align:center;
+
+color:white;
 }
 
 footer p{
-  color:#94a3b8;
-  margin-top:10px;
+margin-top:10px;
+color:#94a3b8;
 }
 
-/* MOBILE */
+/* =========================
+MOBILE
+========================= */
 
 @media(max-width:768px){
 
-  .hero{
-    min-height:280px;
-  }
+.hero{
+min-height:300px;
+}
 
-  .hero-content{
-    flex-direction:column;
-    align-items:flex-start;
-  }
+.brand{
+flex-direction:column;
+align-items:flex-start;
+}
 
-  .brand{
-    flex-direction:column;
-    align-items:flex-start;
-  }
+.brand-text h1{
+font-size:28px;
+}
 
-  .brand-text h1{
-    font-size:28px;
-  }
+.summary-card p{
+font-size:22px;
+}
 
-  .summary-card p{
-    font-size:22px;
-  }
+.chart-box{
+height:300px;
+}
 
-  .chart-box{
-    height:300px;
-  }
-
-  .export-box{
-    flex-direction:column;
-    align-items:flex-start;
-  }
+.section-title h2{
+font-size:22px;
+}
 
 }
 
 </style>
+
 </head>
 
 <body>
 
-<!-- HERO HEADER -->
+<!-- ======================
+HEADER
+====================== -->
 
 <section class="hero">
 
-  <div class="hero-content">
+<div class="hero-content">
 
-    <div class="brand">
+<div class="brand">
 
-      <img src="1000487659.jpg" alt="Logo">
+<img src="1000487659.jpg" alt="Logo">
 
-      <div class="brand-text">
-        <h1>IM CREATIVE VISUAL</h1>
-        <p>
-          Aplikasi Administrasi Keuangan Profesional
-        </p>
-      </div>
+<div class="brand-text">
 
-    </div>
+<h1>
+IM CREATIVE VISUAL
+</h1>
 
-    <div class="header-right">
-      <h3 id="todayDate"></h3>
-      <span>Dashboard Keuangan Bisnis</span>
-    </div>
+<p>
+Aplikasi Administrasi Keuangan Profesional
+</p>
 
-  </div>
+</div>
+
+</div>
+
+<div class="header-right">
+
+<div class="live-date">
+
+<div class="date-box">
+📅
+<span id="todayDate"></span>
+</div>
+
+<div class="time-box">
+🕒
+<span id="liveClock"></span>
+</div>
+
+</div>
+
+<span>
+Dashboard Keuangan Bisnis
+</span>
+
+</div>
+
+</div>
 
 </section>
 
-<!-- MAIN -->
+<!-- ======================
+MAIN
+====================== -->
 
 <main>
 
-  <!-- FORM -->
+<!-- INPUT -->
 
-  <section class="card">
+<section class="card">
 
-    <div class="section-title">
-      <h2>Input Transaksi</h2>
-      <div class="badge">Finance Management</div>
-    </div>
+<div class="section-title">
 
-    <form id="financeForm">
+<h2>
+Input Transaksi
+</h2>
 
-      <div class="form-grid">
+<div class="badge">
+Finance Management
+</div>
 
-        <div class="input-group">
-          <label>Tanggal</label>
-          <input type="date" id="tanggal" required>
-        </div>
+</div>
 
-        <div class="input-group">
-          <label>Jenis</label>
+<form id="financeForm">
 
-          <select id="jenis">
-            <option value="pemasukan">Pemasukan</option>
-            <option value="pengeluaran">Pengeluaran</option>
-          </select>
-        </div>
+<div class="form-grid">
 
-        <div class="input-group">
-          <label>Keterangan</label>
+<div class="input-group">
 
-          <input
-          type="text"
-          id="keterangan"
-          placeholder="Contoh: Penjualan Desain Logo"
-          required>
-        </div>
+<label>Tanggal</label>
 
-        <div class="input-group">
-          <label>Jumlah Uang</label>
+<input
+type="date"
+id="tanggal"
+required>
 
-          <input
-          type="number"
-          id="jumlah"
-          placeholder="Rp 0"
-          required>
-        </div>
+</div>
 
-        <div class="input-group">
-          <label>HPP (Opsional)</label>
+<div class="input-group">
 
-          <input
-          type="number"
-          id="hpp"
-          placeholder="Rp 0">
-        </div>
+<label>Jenis</label>
 
-        <div class="input-group">
-          <label>&nbsp;</label>
+<select id="jenis">
 
-          <button
-          class="save-btn"
-          type="submit">
+<option value="pemasukan">
+Pemasukan
+</option>
 
-          Simpan Data
+<option value="pengeluaran">
+Pengeluaran
+</option>
 
-          </button>
-        </div>
+</select>
 
-      </div>
+</div>
 
-    </form>
+<div class="input-group">
 
-  </section>
+<label>Keterangan</label>
 
-  <!-- SUMMARY -->
+<input
+type="text"
+id="keterangan"
+placeholder="Contoh: Penjualan Desain Logo"
+required>
 
-  <section class="summary-grid">
+</div>
 
-    <div class="summary-card">
-      <div class="summary-icon green">📈</div>
-      <h3>Total Omset</h3>
-      <p id="totalOmset">Rp 0</p>
-    </div>
+<div class="input-group">
 
-    <div class="summary-card">
-      <div class="summary-icon red">📉</div>
-      <h3>Total Pengeluaran</h3>
-      <p id="totalPengeluaran">Rp 0</p>
-    </div>
+<label>Jumlah Uang</label>
 
-    <div class="summary-card">
-      <div class="summary-icon blue">📦</div>
-      <h3>Total HPP</h3>
-      <p id="totalHPP">Rp 0</p>
-    </div>
+<input
+type="number"
+id="jumlah"
+placeholder="Rp 0"
+required>
 
-    <div class="summary-card">
-      <div class="summary-icon purple">💰</div>
-      <h3>Laba Bersih</h3>
-      <p id="labaBersih">Rp 0</p>
-    </div>
+</div>
 
-    <div class="summary-card">
-      <div class="summary-icon orange">⚖️</div>
-      <h3>Laba / Rugi</h3>
-      <p id="labaRugi">Rp 0</p>
-    </div>
+<div class="input-group">
 
-    <div class="summary-card">
-      <div class="summary-icon blue">🏦</div>
-      <h3>Saldo Akhir</h3>
-      <p id="saldoAkhir">Rp 0</p>
-    </div>
+<label>HPP (Opsional)</label>
 
-  </section>
+<input
+type="number"
+id="hpp"
+placeholder="Rp 0">
 
-  <!-- CHART -->
+</div>
 
-  <section class="card">
+<div class="input-group">
 
-    <div class="section-title">
-      <h2>Grafik Omset Penjualan</h2>
-      <div class="badge">12 Bulan</div>
-    </div>
+<label>&nbsp;</label>
 
-    <div class="chart-box">
-      <canvas id="salesChart"></canvas>
-    </div>
+<button
+class="save-btn"
+type="submit">
 
-  </section>
+Simpan Data
 
-  <!-- TABLE -->
+</button>
 
-  <section class="card">
+</div>
 
-    <div class="section-title">
-      <h2>Riwayat Transaksi</h2>
-      <div class="badge">Realtime Data</div>
-    </div>
+</div>
 
-    <div class="table-container">
+</form>
 
-      <table>
+</section>
 
-        <thead>
+<!-- SUMMARY -->
 
-          <tr>
-            <th>Tanggal</th>
-            <th>Jenis</th>
-            <th>Keterangan</th>
-            <th>Jumlah</th>
-            <th>HPP</th>
-          </tr>
+<section class="summary-grid">
 
-        </thead>
+<div class="summary-card">
 
-        <tbody id="tableBody"></tbody>
+<div class="summary-icon green">
+📈
+</div>
 
-      </table>
+<h3>Total Omset</h3>
 
-    </div>
+<p id="totalOmset">
+Rp 0
+</p>
 
-  </section>
+</div>
 
-  <!-- EXPORT -->
+<div class="summary-card">
 
-  <section class="card">
+<div class="summary-icon red">
+📉
+</div>
 
-    <div class="export-box">
+<h3>Total Pengeluaran</h3>
 
-      <div>
-        <h2>Export Laporan</h2>
+<p id="totalPengeluaran">
+Rp 0
+</p>
 
-        <p>
-          Kirim laporan bulanan otomatis ke WhatsApp.
-        </p>
-      </div>
+</div>
 
-      <button
-      class="wa-btn"
-      onclick="exportWhatsApp()">
+<div class="summary-card">
 
-      Kirim Rekap WhatsApp
+<div class="summary-icon blue">
+📦
+</div>
 
-      </button>
+<h3>Total HPP</h3>
 
-    </div>
+<p id="totalHPP">
+Rp 0
+</p>
 
-  </section>
+</div>
+
+<div class="summary-card">
+
+<div class="summary-icon purple">
+💰
+</div>
+
+<h3>Laba Bersih</h3>
+
+<p id="labaBersih">
+Rp 0
+</p>
+
+</div>
+
+<div class="summary-card">
+
+<div class="summary-icon orange">
+⚖️
+</div>
+
+<h3>Laba / Rugi</h3>
+
+<p id="labaRugi">
+Rp 0
+</p>
+
+</div>
+
+<div class="summary-card">
+
+<div class="summary-icon blue">
+🏦
+</div>
+
+<h3>Saldo Akhir</h3>
+
+<p id="saldoAkhir">
+Rp 0
+</p>
+
+</div>
+
+</section>
+
+<!-- CHART -->
+
+<section class="card">
+
+<div class="section-title">
+
+<h2>
+Grafik Omset Penjualan
+</h2>
+
+<div class="badge">
+12 Bulan
+</div>
+
+</div>
+
+<div class="chart-box">
+
+<canvas id="salesChart"></canvas>
+
+</div>
+
+</section>
+
+<!-- TABLE -->
+
+<section class="card">
+
+<div class="section-title">
+
+<h2>
+Riwayat Transaksi
+</h2>
+
+<div class="badge">
+Realtime Data
+</div>
+
+</div>
+
+<div class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Tanggal</th>
+<th>Jam</th>
+<th>Jenis</th>
+<th>Keterangan</th>
+<th>Jumlah</th>
+<th>HPP</th>
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+<tbody id="tableBody"></tbody>
+
+</table>
+
+</div>
+
+</section>
+
+<!-- EXPORT -->
+
+<section class="card">
+
+<div class="export-box">
+
+<div>
+
+<h2>
+Export Laporan
+</h2>
+
+<p>
+Kirim laporan otomatis ke WhatsApp.
+</p>
+
+</div>
+
+<button
+class="wa-btn"
+onclick="exportWhatsApp()">
+
+Kirim Rekap WhatsApp
+
+</button>
+
+</div>
+
+</section>
 
 </main>
 
-<!-- FOOTER -->
+<!-- ======================
+FOOTER
+====================== -->
 
 <footer>
 
-  <h2>IM CREATIVE VISUAL</h2>
+<h2>
+IM CREATIVE VISUAL
+</h2>
 
-  <p>
-    Solusi Desain Untuk UMKM & Brand Berkembang
-  </p>
+<p>
+Solusi Desain Untuk UMKM & Brand Berkembang
+</p>
 
 </footer>
 
+<!-- ======================
+SCRIPT
+====================== -->
+
 <script>
 
-document.getElementById("todayDate").innerHTML =
-new Date().toLocaleDateString(
+/* ======================
+DATE TIME
+====================== */
+
+function updateDateTime(){
+
+const now = new Date();
+
+const currentDate =
+now.toLocaleDateString(
 "id-ID",
 {
+weekday:"long",
 day:"numeric",
 month:"long",
 year:"numeric"
 }
 );
+
+const currentTime =
+now.toLocaleTimeString(
+"id-ID",
+{
+hour:"2-digit",
+minute:"2-digit",
+second:"2-digit"
+}
+);
+
+document.getElementById("todayDate")
+.innerHTML = currentDate;
+
+document.getElementById("liveClock")
+.innerHTML = currentTime;
+
+}
+
+setInterval(updateDateTime,1000);
+
+updateDateTime();
+
+/* ======================
+DATA
+====================== */
 
 const financeForm =
 document.getElementById("financeForm");
@@ -725,6 +1033,10 @@ JSON.parse(
 localStorage.getItem("transactions")
 ) || [];
 
+/* ======================
+SUBMIT
+====================== */
+
 financeForm.addEventListener(
 "submit",
 function(e){
@@ -735,6 +1047,15 @@ const data = {
 
 tanggal:
 document.getElementById("tanggal").value,
+
+jam:
+new Date().toLocaleTimeString(
+"id-ID",
+{
+hour:"2-digit",
+minute:"2-digit"
+}
+),
 
 jenis:
 document.getElementById("jenis").value,
@@ -770,6 +1091,10 @@ renderChart();
 }
 );
 
+/* ======================
+TABLE
+====================== */
+
 function renderTable(){
 
 tableBody.innerHTML = "";
@@ -778,8 +1103,11 @@ if(transactions.length === 0){
 
 tableBody.innerHTML = `
 <tr>
-<td colspan="5"
-style="text-align:center;padding:30px;">
+<td colspan="7"
+style="
+text-align:center;
+padding:30px;
+">
 Belum ada transaksi
 </td>
 </tr>
@@ -791,10 +1119,20 @@ return;
 
 transactions.forEach(item=>{
 
+const status =
+item.jenis === "pemasukan"
+?
+'<span class="badge-income">Masuk</span>'
+:
+'<span class="badge-expense">Keluar</span>';
+
 tableBody.innerHTML += `
+
 <tr>
 
 <td>${item.tanggal}</td>
+
+<td>${item.jam}</td>
 
 <td>
 
@@ -818,12 +1156,19 @@ Rp ${item.jumlah.toLocaleString()}
 Rp ${item.hpp.toLocaleString()}
 </td>
 
+<td>${status}</td>
+
 </tr>
+
 `;
 
 });
 
 }
+
+/* ======================
+SUMMARY
+====================== */
 
 function calculateSummary(){
 
@@ -833,9 +1178,10 @@ let totalHPP = 0;
 
 transactions.forEach(item=>{
 
-if(item.jenis==="pemasukan"){
+if(item.jenis === "pemasukan"){
 
 omset += item.jumlah;
+
 totalHPP += item.hpp;
 
 }else{
@@ -881,6 +1227,10 @@ document.getElementById("saldoAkhir")
 "Rp " + saldoAkhir.toLocaleString();
 
 }
+
+/* ======================
+CHART
+====================== */
 
 let chart;
 
@@ -939,7 +1289,7 @@ data:data,
 borderColor:'#7c3aed',
 
 backgroundColor:
-'rgba(124,58,237,0.2)',
+'rgba(124,58,237,0.15)',
 
 fill:true,
 
@@ -947,9 +1297,9 @@ tension:0.4,
 
 borderWidth:3,
 
-pointBackgroundColor:'#7c3aed',
+pointRadius:5,
 
-pointRadius:5
+pointBackgroundColor:'#7c3aed'
 
 }]
 
@@ -966,6 +1316,10 @@ maintainAspectRatio:false
 });
 
 }
+
+/* ======================
+WHATSAPP EXPORT
+====================== */
 
 function exportWhatsApp(){
 
@@ -1004,19 +1358,20 @@ year:"numeric"
 );
 
 const text = `
+
 📊 REKAP KEUANGAN
 IM CREATIVE VISUAL
 
 📅 Bulan:
 ${month}
 
-💰 Omset:
+💰 Total Omset:
 Rp ${omset.toLocaleString()}
 
-📉 Pengeluaran:
+📉 Total Pengeluaran:
 Rp ${pengeluaran.toLocaleString()}
 
-📦 HPP:
+📦 Total HPP:
 Rp ${totalHPP.toLocaleString()}
 
 ✅ Laba Bersih:
@@ -1024,6 +1379,7 @@ Rp ${labaBersih.toLocaleString()}
 
 🏦 Saldo Akhir:
 Rp ${saldoAkhir.toLocaleString()}
+
 `;
 
 const url =
@@ -1035,8 +1391,14 @@ window.open(url,"_blank");
 
 }
 
+/* ======================
+LOAD
+====================== */
+
 renderTable();
+
 calculateSummary();
+
 renderChart();
 
 </script>
