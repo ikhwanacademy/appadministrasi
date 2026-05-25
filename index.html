@@ -9,8 +9,10 @@
 IM CREATIVE VISUAL - Finance Dashboard
 </title>
 
+<!-- CHART JS -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+<!-- GOOGLE FONT -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -44,7 +46,7 @@ position:relative;
 
 width:100%;
 
-min-height:340px;
+min-height:360px;
 
 background:
 linear-gradient(
@@ -52,7 +54,7 @@ rgba(2,6,23,0.88),
 rgba(15,23,42,0.92)
 ),
 
-url('1000490502.jpg');
+url('1000490501.jpg');
 
 background-size:cover;
 background-position:center;
@@ -85,8 +87,8 @@ gap:20px;
 
 .brand img{
 
-width:90px;
-height:90px;
+width:95px;
+height:95px;
 
 object-fit:cover;
 
@@ -103,7 +105,7 @@ box-shadow:
 
 .brand-text h1{
 
-font-size:40px;
+font-size:42px;
 font-weight:700;
 color:white;
 
@@ -862,11 +864,11 @@ Rp 0
 <div class="section-title">
 
 <h2>
-Grafik Omset Penjualan
+Grafik Hasil Penjualan
 </h2>
 
 <div class="badge">
-12 Bulan
+Realtime Sales Chart
 </div>
 
 </div>
@@ -978,7 +980,7 @@ SCRIPT
 <script>
 
 /* ======================
-DATE TIME
+DATE & CLOCK
 ====================== */
 
 function updateDateTime(){
@@ -1019,7 +1021,7 @@ setInterval(updateDateTime,1000);
 updateDateTime();
 
 /* ======================
-DATA
+DATA STORAGE
 ====================== */
 
 const financeForm =
@@ -1034,7 +1036,7 @@ localStorage.getItem("transactions")
 ) || [];
 
 /* ======================
-SUBMIT
+FORM SUBMIT
 ====================== */
 
 financeForm.addEventListener(
@@ -1282,7 +1284,7 @@ labels:labels,
 
 datasets:[{
 
-label:'Omset Penjualan',
+label:'Hasil Penjualan',
 
 data:data,
 
@@ -1295,7 +1297,7 @@ fill:true,
 
 tension:0.4,
 
-borderWidth:3,
+borderWidth:4,
 
 pointRadius:5,
 
@@ -1318,7 +1320,7 @@ maintainAspectRatio:false
 }
 
 /* ======================
-WHATSAPP EXPORT
+EXPORT WHATSAPP
 ====================== */
 
 function exportWhatsApp(){
@@ -1392,7 +1394,7 @@ window.open(url,"_blank");
 }
 
 /* ======================
-LOAD
+INITIAL LOAD
 ====================== */
 
 renderTable();
