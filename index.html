@@ -1,258 +1,649 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>IM CREATIVE VISUAL - Finance App</title>
+<title>IM CREATIVE VISUAL - Finance App</title>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <style>
+<style>
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial, sans-serif;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
 
-    body{
-      background:#f4f6f9;
-      color:#333;
-    }
+body{
+  background:#f4f7fb;
+  color:#1e293b;
+}
 
-    header{
-      background:#111827;
-      color:white;
-      padding:25px;
-      text-align:center;
-    }
+/* HEADER */
 
-    header h1{
-      font-size:28px;
-      margin-bottom:8px;
-    }
+.hero{
 
-    main{
-      max-width:1200px;
-      margin:auto;
-      padding:15px;
-    }
+  position:relative;
+  width:100%;
+  min-height:340px;
 
-    .card{
-      background:white;
-      padding:20px;
-      border-radius:15px;
-      margin-bottom:20px;
-      box-shadow:0 4px 12px rgba(0,0,0,0.05);
-    }
+  background:
+  linear-gradient(
+  rgba(4,8,24,0.82),
+  rgba(4,8,24,0.88)),
+  url('1000490502.jpg');
 
-    .card h2{
-      margin-bottom:15px;
-      color:#111827;
-    }
+  background-size:cover;
+  background-position:center;
 
-    form{
-      display:grid;
-      gap:12px;
-    }
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-    input,
-    select,
-    button{
-      padding:14px;
-      border-radius:10px;
-      border:1px solid #ddd;
-      font-size:15px;
-    }
+  overflow:hidden;
+}
 
-    button{
-      background:#111827;
-      color:white;
-      border:none;
-      cursor:pointer;
-      font-weight:bold;
-    }
+.hero-content{
+  width:100%;
+  max-width:1300px;
+  padding:30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
 
-    button:hover{
-      opacity:0.9;
-    }
+.brand{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
 
-    .summary-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-      gap:15px;
-      margin-bottom:20px;
-    }
+.brand img{
+  width:90px;
+  height:90px;
+  object-fit:contain;
+  background:white;
+  border-radius:24px;
+  padding:10px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.25);
+}
 
-    .summary-card{
-      background:white;
-      padding:20px;
-      border-radius:15px;
-      text-align:center;
-      box-shadow:0 4px 12px rgba(0,0,0,0.05);
-    }
+.brand-text h1{
+  color:white;
+  font-size:38px;
+  font-weight:700;
+  margin-bottom:5px;
+}
 
-    .summary-card h3{
-      font-size:16px;
-      margin-bottom:10px;
-      color:#555;
-    }
+.brand-text p{
+  color:#cbd5e1;
+  font-size:16px;
+}
 
-    .summary-card p{
-      font-size:22px;
-      font-weight:bold;
-      color:#111827;
-    }
+.header-right{
 
-    .table-container{
-      overflow:auto;
-    }
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(10px);
 
-    table{
-      width:100%;
-      border-collapse:collapse;
-    }
+  padding:18px 24px;
 
-    th,td{
-      padding:12px;
-      border-bottom:1px solid #eee;
-      text-align:left;
-    }
+  border-radius:20px;
+  color:white;
+  border:1px solid rgba(255,255,255,0.1);
+}
 
-    th{
-      background:#111827;
-      color:white;
-    }
+.header-right h3{
+  font-size:15px;
+  font-weight:500;
+  color:#dbeafe;
+}
 
-    canvas{
-      width:100% !important;
-      max-height:400px;
-    }
+.header-right span{
+  font-size:14px;
+  color:#cbd5e1;
+}
 
-    .danger{
-      background:#dc2626;
-    }
+/* MAIN */
 
-    .empty{
-      text-align:center;
-      padding:20px;
-      color:#777;
-    }
+main{
+  max-width:1300px;
+  margin:auto;
+  margin-top:-80px;
+  position:relative;
+  z-index:10;
+  padding:20px;
+}
 
-    footer{
-      text-align:center;
-      padding:20px;
-      color:#666;
-    }
+.card{
 
-    @media(max-width:768px){
+  background:white;
+  border-radius:24px;
+  padding:28px;
+  margin-bottom:25px;
 
-      header h1{
-        font-size:22px;
-      }
+  box-shadow:
+  0 10px 30px rgba(15,23,42,0.06);
 
-      .summary-card p{
-        font-size:18px;
-      }
+  border:1px solid #edf2f7;
+}
 
-      table{
-        font-size:12px;
-      }
+.section-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:22px;
+}
 
-    }
+.section-title h2{
+  font-size:24px;
+  color:#0f172a;
+}
 
-  </style>
+.badge{
+  background:#ede9fe;
+  color:#6d28d9;
+  padding:8px 15px;
+  border-radius:12px;
+  font-size:13px;
+  font-weight:600;
+}
+
+/* FORM */
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
+
+.input-group{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.input-group label{
+  font-size:14px;
+  color:#475569;
+  font-weight:500;
+}
+
+input,
+select{
+
+  width:100%;
+  padding:14px 16px;
+
+  border-radius:14px;
+  border:1px solid #dbe4f0;
+
+  background:#f8fafc;
+
+  font-size:15px;
+  transition:0.3s;
+}
+
+input:focus,
+select:focus{
+  outline:none;
+  border-color:#7c3aed;
+  background:white;
+  box-shadow:0 0 0 4px rgba(124,58,237,0.12);
+}
+
+.save-btn{
+
+  width:100%;
+  padding:15px;
+
+  border:none;
+  border-radius:16px;
+
+  background:
+  linear-gradient(
+  135deg,
+  #0f172a,
+  #1d4ed8);
+
+  color:white;
+  font-size:15px;
+  font-weight:600;
+
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.save-btn:hover{
+  transform:translateY(-2px);
+}
+
+/* SUMMARY */
+
+.summary-grid{
+
+  display:grid;
+  grid-template-columns:
+  repeat(auto-fit,minmax(220px,1fr));
+
+  gap:20px;
+}
+
+.summary-card{
+
+  position:relative;
+  overflow:hidden;
+
+  background:white;
+
+  border-radius:22px;
+  padding:25px;
+
+  border:1px solid #edf2f7;
+
+  box-shadow:
+  0 10px 25px rgba(0,0,0,0.04);
+
+  transition:0.3s;
+}
+
+.summary-card:hover{
+  transform:translateY(-5px);
+}
+
+.summary-icon{
+
+  width:58px;
+  height:58px;
+
+  border-radius:18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  margin-bottom:18px;
+
+  font-size:25px;
+}
+
+.green{
+  background:#dcfce7;
+  color:#16a34a;
+}
+
+.red{
+  background:#fee2e2;
+  color:#dc2626;
+}
+
+.blue{
+  background:#dbeafe;
+  color:#2563eb;
+}
+
+.purple{
+  background:#ede9fe;
+  color:#7c3aed;
+}
+
+.orange{
+  background:#ffedd5;
+  color:#ea580c;
+}
+
+.summary-card h3{
+  font-size:15px;
+  color:#64748b;
+  margin-bottom:10px;
+}
+
+.summary-card p{
+  font-size:28px;
+  font-weight:700;
+  color:#0f172a;
+}
+
+/* CHART */
+
+.chart-box{
+  height:420px;
+}
+
+/* TABLE */
+
+.table-container{
+  overflow:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+thead{
+  background:
+  linear-gradient(
+  135deg,
+  #0f172a,
+  #1e3a8a);
+}
+
+th{
+  color:white;
+  padding:16px;
+  text-align:left;
+  font-size:14px;
+}
+
+td{
+  padding:16px;
+  border-bottom:1px solid #edf2f7;
+  font-size:14px;
+}
+
+tbody tr:hover{
+  background:#f8fafc;
+}
+
+.badge-income{
+  background:#dcfce7;
+  color:#16a34a;
+  padding:6px 12px;
+  border-radius:10px;
+  font-size:12px;
+  font-weight:600;
+}
+
+.badge-expense{
+  background:#fee2e2;
+  color:#dc2626;
+  padding:6px 12px;
+  border-radius:10px;
+  font-size:12px;
+  font-weight:600;
+}
+
+/* EXPORT */
+
+.export-box{
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+
+.export-box p{
+  color:#64748b;
+}
+
+.wa-btn{
+
+  padding:16px 24px;
+
+  border:none;
+  border-radius:18px;
+
+  background:
+  linear-gradient(
+  135deg,
+  #0f172a,
+  #111827);
+
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* FOOTER */
+
+footer{
+
+  margin-top:40px;
+
+  background:
+  linear-gradient(
+  135deg,
+  #020617,
+  #0f172a);
+
+  color:white;
+
+  text-align:center;
+  padding:40px 20px;
+}
+
+footer p{
+  color:#94a3b8;
+  margin-top:10px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .hero{
+    min-height:280px;
+  }
+
+  .hero-content{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .brand{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .brand-text h1{
+    font-size:28px;
+  }
+
+  .summary-card p{
+    font-size:22px;
+  }
+
+  .chart-box{
+    height:300px;
+  }
+
+  .export-box{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+}
+
+</style>
 </head>
 
 <body>
 
-<header>
-  <h1>IM CREATIVE VISUAL</h1>
-  <p>Aplikasi Administrasi Keuangan</p>
-</header>
+<!-- HERO HEADER -->
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <div class="brand">
+
+      <img src="1000487659.jpg" alt="Logo">
+
+      <div class="brand-text">
+        <h1>IM CREATIVE VISUAL</h1>
+        <p>
+          Aplikasi Administrasi Keuangan Profesional
+        </p>
+      </div>
+
+    </div>
+
+    <div class="header-right">
+      <h3 id="todayDate"></h3>
+      <span>Dashboard Keuangan Bisnis</span>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- MAIN -->
 
 <main>
 
+  <!-- FORM -->
+
   <section class="card">
 
-    <h2>Input Transaksi</h2>
+    <div class="section-title">
+      <h2>Input Transaksi</h2>
+      <div class="badge">Finance Management</div>
+    </div>
 
     <form id="financeForm">
 
-      <input type="date" id="tanggal" required>
+      <div class="form-grid">
 
-      <select id="jenis">
-        <option value="pemasukan">Pemasukan</option>
-        <option value="pengeluaran">Pengeluaran</option>
-      </select>
+        <div class="input-group">
+          <label>Tanggal</label>
+          <input type="date" id="tanggal" required>
+        </div>
 
-      <input type="text" id="keterangan" placeholder="Keterangan" required>
+        <div class="input-group">
+          <label>Jenis</label>
 
-      <input type="number" id="jumlah" placeholder="Jumlah Uang" required>
+          <select id="jenis">
+            <option value="pemasukan">Pemasukan</option>
+            <option value="pengeluaran">Pengeluaran</option>
+          </select>
+        </div>
 
-      <input type="number" id="hpp" placeholder="HPP (Opsional)">
+        <div class="input-group">
+          <label>Keterangan</label>
 
-      <button type="submit">
-        Simpan Data
-      </button>
+          <input
+          type="text"
+          id="keterangan"
+          placeholder="Contoh: Penjualan Desain Logo"
+          required>
+        </div>
+
+        <div class="input-group">
+          <label>Jumlah Uang</label>
+
+          <input
+          type="number"
+          id="jumlah"
+          placeholder="Rp 0"
+          required>
+        </div>
+
+        <div class="input-group">
+          <label>HPP (Opsional)</label>
+
+          <input
+          type="number"
+          id="hpp"
+          placeholder="Rp 0">
+        </div>
+
+        <div class="input-group">
+          <label>&nbsp;</label>
+
+          <button
+          class="save-btn"
+          type="submit">
+
+          Simpan Data
+
+          </button>
+        </div>
+
+      </div>
 
     </form>
 
   </section>
 
+  <!-- SUMMARY -->
+
   <section class="summary-grid">
 
     <div class="summary-card">
+      <div class="summary-icon green">📈</div>
       <h3>Total Omset</h3>
       <p id="totalOmset">Rp 0</p>
     </div>
 
     <div class="summary-card">
+      <div class="summary-icon red">📉</div>
       <h3>Total Pengeluaran</h3>
       <p id="totalPengeluaran">Rp 0</p>
     </div>
 
     <div class="summary-card">
+      <div class="summary-icon blue">📦</div>
       <h3>Total HPP</h3>
       <p id="totalHPP">Rp 0</p>
     </div>
 
     <div class="summary-card">
+      <div class="summary-icon purple">💰</div>
       <h3>Laba Bersih</h3>
       <p id="labaBersih">Rp 0</p>
     </div>
 
     <div class="summary-card">
+      <div class="summary-icon orange">⚖️</div>
       <h3>Laba / Rugi</h3>
       <p id="labaRugi">Rp 0</p>
     </div>
 
     <div class="summary-card">
+      <div class="summary-icon blue">🏦</div>
       <h3>Saldo Akhir</h3>
       <p id="saldoAkhir">Rp 0</p>
     </div>
 
   </section>
 
+  <!-- CHART -->
+
   <section class="card">
 
-    <h2>Grafik Omset Penjualan</h2>
+    <div class="section-title">
+      <h2>Grafik Omset Penjualan</h2>
+      <div class="badge">12 Bulan</div>
+    </div>
 
-    <canvas id="salesChart"></canvas>
+    <div class="chart-box">
+      <canvas id="salesChart"></canvas>
+    </div>
 
   </section>
 
+  <!-- TABLE -->
+
   <section class="card">
 
-    <h2>Riwayat Transaksi</h2>
+    <div class="section-title">
+      <h2>Riwayat Transaksi</h2>
+      <div class="badge">Realtime Data</div>
+    </div>
 
     <div class="table-container">
 
       <table>
 
         <thead>
+
           <tr>
             <th>Tanggal</th>
             <th>Jenis</th>
@@ -260,6 +651,7 @@
             <th>Jumlah</th>
             <th>HPP</th>
           </tr>
+
         </thead>
 
         <tbody id="tableBody"></tbody>
@@ -270,153 +662,223 @@
 
   </section>
 
+  <!-- EXPORT -->
+
   <section class="card">
 
-    <h2>Export Laporan</h2>
+    <div class="export-box">
 
-    <button onclick="exportWhatsApp()">
-      Kirim Rekap Bulanan ke WhatsApp
-    </button>
+      <div>
+        <h2>Export Laporan</h2>
+
+        <p>
+          Kirim laporan bulanan otomatis ke WhatsApp.
+        </p>
+      </div>
+
+      <button
+      class="wa-btn"
+      onclick="exportWhatsApp()">
+
+      Kirim Rekap WhatsApp
+
+      </button>
+
+    </div>
 
   </section>
 
 </main>
 
+<!-- FOOTER -->
+
 <footer>
-  © 2026 IM CREATIVE VISUAL
+
+  <h2>IM CREATIVE VISUAL</h2>
+
+  <p>
+    Solusi Desain Untuk UMKM & Brand Berkembang
+  </p>
+
 </footer>
 
 <script>
 
-const financeForm = document.getElementById("financeForm");
-const tableBody = document.getElementById("tableBody");
+document.getElementById("todayDate").innerHTML =
+new Date().toLocaleDateString(
+"id-ID",
+{
+day:"numeric",
+month:"long",
+year:"numeric"
+}
+);
+
+const financeForm =
+document.getElementById("financeForm");
+
+const tableBody =
+document.getElementById("tableBody");
 
 let transactions =
-  JSON.parse(localStorage.getItem("transactions")) || [];
+JSON.parse(
+localStorage.getItem("transactions")
+) || [];
 
-financeForm.addEventListener("submit", function(e){
+financeForm.addEventListener(
+"submit",
+function(e){
 
-  e.preventDefault();
+e.preventDefault();
 
-  const data = {
+const data = {
 
-    tanggal:
-      document.getElementById("tanggal").value,
+tanggal:
+document.getElementById("tanggal").value,
 
-    jenis:
-      document.getElementById("jenis").value,
+jenis:
+document.getElementById("jenis").value,
 
-    keterangan:
-      document.getElementById("keterangan").value,
+keterangan:
+document.getElementById("keterangan").value,
 
-    jumlah:
-      parseInt(document.getElementById("jumlah").value),
+jumlah:
+parseInt(
+document.getElementById("jumlah").value
+),
 
-    hpp:
-      parseInt(document.getElementById("hpp").value) || 0
+hpp:
+parseInt(
+document.getElementById("hpp").value
+) || 0
 
-  };
+};
 
-  transactions.push(data);
+transactions.push(data);
 
-  localStorage.setItem(
-    "transactions",
-    JSON.stringify(transactions)
-  );
+localStorage.setItem(
+"transactions",
+JSON.stringify(transactions)
+);
 
-  financeForm.reset();
+financeForm.reset();
 
-  renderTable();
-  calculateSummary();
-  renderChart();
+renderTable();
+calculateSummary();
+renderChart();
 
-});
+}
+);
 
 function renderTable(){
 
-  tableBody.innerHTML = "";
+tableBody.innerHTML = "";
 
-  if(transactions.length === 0){
+if(transactions.length === 0){
 
-    tableBody.innerHTML = `
-      <tr>
-        <td colspan="5" class="empty">
-          Belum ada transaksi
-        </td>
-      </tr>
-    `;
+tableBody.innerHTML = `
+<tr>
+<td colspan="5"
+style="text-align:center;padding:30px;">
+Belum ada transaksi
+</td>
+</tr>
+`;
 
-    return;
-  }
+return;
 
-  transactions.forEach(item => {
+}
 
-    tableBody.innerHTML += `
-      <tr>
-        <td>${item.tanggal}</td>
-        <td>${item.jenis}</td>
-        <td>${item.keterangan}</td>
-        <td>Rp ${item.jumlah.toLocaleString()}</td>
-        <td>Rp ${item.hpp.toLocaleString()}</td>
-      </tr>
-    `;
+transactions.forEach(item=>{
 
-  });
+tableBody.innerHTML += `
+<tr>
+
+<td>${item.tanggal}</td>
+
+<td>
+
+${
+item.jenis === "pemasukan"
+?
+'<span class="badge-income">Pemasukan</span>'
+:
+'<span class="badge-expense">Pengeluaran</span>'
+}
+
+</td>
+
+<td>${item.keterangan}</td>
+
+<td>
+Rp ${item.jumlah.toLocaleString()}
+</td>
+
+<td>
+Rp ${item.hpp.toLocaleString()}
+</td>
+
+</tr>
+`;
+
+});
 
 }
 
 function calculateSummary(){
 
-  let omset = 0;
-  let pengeluaran = 0;
-  let totalHPP = 0;
+let omset = 0;
+let pengeluaran = 0;
+let totalHPP = 0;
 
-  transactions.forEach(item => {
+transactions.forEach(item=>{
 
-    if(item.jenis === "pemasukan"){
+if(item.jenis==="pemasukan"){
 
-      omset += item.jumlah;
-      totalHPP += item.hpp;
+omset += item.jumlah;
+totalHPP += item.hpp;
 
-    }else{
+}else{
 
-      pengeluaran += item.jumlah;
+pengeluaran += item.jumlah;
 
-    }
+}
 
-  });
+});
 
-  const labaBersih =
-    omset - pengeluaran - totalHPP;
+const labaBersih =
+omset - pengeluaran - totalHPP;
 
-  const saldoAkhir =
-    omset - pengeluaran;
+const saldoAkhir =
+omset - pengeluaran;
 
-  document.getElementById("totalOmset")
-    .innerText =
-      "Rp " + omset.toLocaleString();
+document.getElementById("totalOmset")
+.innerText =
+"Rp " + omset.toLocaleString();
 
-  document.getElementById("totalPengeluaran")
-    .innerText =
-      "Rp " + pengeluaran.toLocaleString();
+document.getElementById("totalPengeluaran")
+.innerText =
+"Rp " + pengeluaran.toLocaleString();
 
-  document.getElementById("totalHPP")
-    .innerText =
-      "Rp " + totalHPP.toLocaleString();
+document.getElementById("totalHPP")
+.innerText =
+"Rp " + totalHPP.toLocaleString();
 
-  document.getElementById("labaBersih")
-    .innerText =
-      "Rp " + labaBersih.toLocaleString();
+document.getElementById("labaBersih")
+.innerText =
+"Rp " + labaBersih.toLocaleString();
 
-  document.getElementById("labaRugi")
-    .innerText =
-      labaBersih >= 0
-      ? "Laba Rp " + labaBersih.toLocaleString()
-      : "Rugi Rp " + Math.abs(labaBersih).toLocaleString();
+document.getElementById("labaRugi")
+.innerText =
+labaBersih >= 0
+?
+"Laba"
+:
+"Rugi";
 
-  document.getElementById("saldoAkhir")
-    .innerText =
-      "Rp " + saldoAkhir.toLocaleString();
+document.getElementById("saldoAkhir")
+.innerText =
+"Rp " + saldoAkhir.toLocaleString();
 
 }
 
@@ -424,113 +886,137 @@ let chart;
 
 function renderChart(){
 
-  const monthlyData = {};
+const monthlyData = {};
 
-  transactions.forEach(item => {
+transactions.forEach(item=>{
 
-    const month =
-      item.tanggal.substring(0,7);
+const month =
+item.tanggal.substring(0,7);
 
-    if(!monthlyData[month]){
+if(!monthlyData[month]){
 
-      monthlyData[month] = 0;
+monthlyData[month] = 0;
 
-    }
+}
 
-    if(item.jenis === "pemasukan"){
+if(item.jenis==="pemasukan"){
 
-      monthlyData[month] += item.jumlah;
+monthlyData[month] += item.jumlah;
 
-    }
+}
 
-  });
+});
 
-  const labels = Object.keys(monthlyData);
-  const data = Object.values(monthlyData);
+const labels =
+Object.keys(monthlyData);
 
-  const ctx =
-    document.getElementById("salesChart");
+const data =
+Object.values(monthlyData);
 
-  if(chart){
+const ctx =
+document.getElementById("salesChart");
 
-    chart.destroy();
+if(chart){
 
-  }
+chart.destroy();
 
-  chart = new Chart(ctx, {
+}
 
-    type:'line',
+chart = new Chart(ctx,{
 
-    data:{
-      labels:labels,
+type:'line',
 
-      datasets:[{
+data:{
 
-        label:'Omset Penjualan',
+labels:labels,
 
-        data:data,
+datasets:[{
 
-        borderWidth:3,
+label:'Omset Penjualan',
 
-        tension:0.3,
+data:data,
 
-        fill:false
+borderColor:'#7c3aed',
 
-      }]
-    }
+backgroundColor:
+'rgba(124,58,237,0.2)',
 
-  });
+fill:true,
+
+tension:0.4,
+
+borderWidth:3,
+
+pointBackgroundColor:'#7c3aed',
+
+pointRadius:5
+
+}]
+
+},
+
+options:{
+
+responsive:true,
+
+maintainAspectRatio:false
+
+}
+
+});
 
 }
 
 function exportWhatsApp(){
 
-  let omset = 0;
-  let pengeluaran = 0;
-  let totalHPP = 0;
+let omset = 0;
+let pengeluaran = 0;
+let totalHPP = 0;
 
-  transactions.forEach(item => {
+transactions.forEach(item=>{
 
-    if(item.jenis === "pemasukan"){
+if(item.jenis==="pemasukan"){
 
-      omset += item.jumlah;
-      totalHPP += item.hpp;
+omset += item.jumlah;
+totalHPP += item.hpp;
 
-    }else{
+}else{
 
-      pengeluaran += item.jumlah;
+pengeluaran += item.jumlah;
 
-    }
+}
 
-  });
+});
 
-  const labaBersih =
-    omset - pengeluaran - totalHPP;
+const labaBersih =
+omset - pengeluaran - totalHPP;
 
-  const saldoAkhir =
-    omset - pengeluaran;
+const saldoAkhir =
+omset - pengeluaran;
 
-  const month =
-    new Date().toLocaleString("id-ID", {
+const month =
+new Date().toLocaleString(
+"id-ID",
+{
+month:"long",
+year:"numeric"
+}
+);
 
-      month:"long",
-      year:"numeric"
-
-    });
-
-  const text = `
-📊 REKAP KEUANGAN IM CREATIVE VISUAL
+const text = `
+📊 REKAP KEUANGAN
+IM CREATIVE VISUAL
 
 📅 Bulan:
 ${month}
 
-💰 Total Omset:
+💰 Omset:
 Rp ${omset.toLocaleString()}
 
-📉 Total Pengeluaran:
+📉 Pengeluaran:
 Rp ${pengeluaran.toLocaleString()}
 
-📦 Total HPP:
+📦 HPP:
 Rp ${totalHPP.toLocaleString()}
 
 ✅ Laba Bersih:
@@ -540,10 +1026,12 @@ Rp ${labaBersih.toLocaleString()}
 Rp ${saldoAkhir.toLocaleString()}
 `;
 
-  const url =
-    `https://wa.me/?text=${encodeURIComponent(text)}`;
+const url =
+`https://wa.me/?text=${
+encodeURIComponent(text)
+}`;
 
-  window.open(url, "_blank");
+window.open(url,"_blank");
 
 }
 
