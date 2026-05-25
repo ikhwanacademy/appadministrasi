@@ -1,1409 +1,639 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>
-IM CREATIVE VISUAL - Finance Dashboard
-</title>
-
-<!-- CHART JS -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<!-- GOOGLE FONT -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-/* =========================
-GLOBAL
-========================= */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
-
-body{
-background:#f1f5f9;
-color:#0f172a;
-overflow-x:hidden;
-}
-
-/* =========================
-HEADER
-========================= */
-
-.hero{
-
-position:relative;
-
-width:100%;
-
-min-height:360px;
-
-background:
-linear-gradient(
-rgba(2,6,23,0.88),
-rgba(15,23,42,0.92)
-),
-
-url('1000490501.jpg');
-
-background-size:cover;
-background-position:center;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-padding:30px;
-}
-
-.hero-content{
-
-width:100%;
-max-width:1350px;
-
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:20px;
-flex-wrap:wrap;
-
-}
-
-.brand{
-display:flex;
-align-items:center;
-gap:20px;
-}
-
-.brand img{
-
-width:95px;
-height:95px;
-
-object-fit:cover;
-
-border-radius:24px;
-
-background:white;
-
-padding:10px;
-
-box-shadow:
-0 15px 40px rgba(0,0,0,0.25);
-
-}
-
-.brand-text h1{
-
-font-size:42px;
-font-weight:700;
-color:white;
-
-margin-bottom:6px;
-
-}
-
-.brand-text p{
-color:#cbd5e1;
-font-size:16px;
-}
-
-.header-right{
-
-background:rgba(255,255,255,0.08);
-
-padding:20px;
-
-border-radius:24px;
-
-backdrop-filter:blur(14px);
-
-border:1px solid rgba(255,255,255,0.1);
-
-min-width:280px;
-}
-
-.live-date{
-display:flex;
-flex-direction:column;
-gap:12px;
-margin-bottom:12px;
-}
-
-.date-box,
-.time-box{
-
-background:rgba(255,255,255,0.08);
-
-padding:12px 16px;
-
-border-radius:16px;
-
-color:white;
-
-font-size:14px;
-font-weight:600;
-
-}
-
-.header-right span{
-color:#cbd5e1;
-font-size:13px;
-}
-
-/* =========================
-MAIN
-========================= */
-
-main{
-
-max-width:1350px;
-
-margin:auto;
-
-margin-top:-70px;
-
-position:relative;
-z-index:20;
-
-padding:20px;
-
-}
-
-/* =========================
-CARD
-========================= */
-
-.card{
-
-background:white;
-
-padding:28px;
-
-border-radius:28px;
-
-margin-bottom:24px;
-
-border:1px solid #e2e8f0;
-
-box-shadow:
-0 10px 40px rgba(15,23,42,0.05);
-
-}
-
-.section-title{
-
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-margin-bottom:24px;
-
-flex-wrap:wrap;
-gap:15px;
-
-}
-
-.section-title h2{
-font-size:28px;
-font-weight:700;
-}
-
-.badge{
-
-background:#ede9fe;
-
-color:#7c3aed;
-
-padding:10px 16px;
-
-border-radius:14px;
-
-font-size:13px;
-font-weight:600;
-}
-
-/* =========================
-FORM
-========================= */
-
-.form-grid{
-
-display:grid;
-
-grid-template-columns:
-repeat(auto-fit,minmax(220px,1fr));
-
-gap:18px;
-}
-
-.input-group{
-display:flex;
-flex-direction:column;
-gap:8px;
-}
-
-.input-group label{
-
-font-size:14px;
-font-weight:600;
-
-color:#475569;
-}
-
-input,
-select{
-
-width:100%;
-
-padding:15px 16px;
-
-border-radius:16px;
-
-border:1px solid #dbe4f0;
-
-background:#f8fafc;
-
-font-size:15px;
-
-transition:0.3s;
-}
-
-input:focus,
-select:focus{
-
-outline:none;
-
-border-color:#7c3aed;
-
-background:white;
-
-box-shadow:
-0 0 0 4px rgba(124,58,237,0.12);
-
-}
-
-.save-btn{
-
-width:100%;
-
-padding:16px;
-
-border:none;
-
-border-radius:18px;
-
-background:
-linear-gradient(
-135deg,
-#0f172a,
-#1d4ed8);
-
-color:white;
-
-font-size:15px;
-font-weight:600;
-
-cursor:pointer;
-
-transition:0.3s;
-}
-
-.save-btn:hover{
-transform:translateY(-3px);
-}
-
-/* =========================
-SUMMARY
-========================= */
-
-.summary-grid{
-
-display:grid;
-
-grid-template-columns:
-repeat(auto-fit,minmax(220px,1fr));
-
-gap:20px;
-}
-
-.summary-card{
-
-background:white;
-
-padding:25px;
-
-border-radius:24px;
-
-border:1px solid #edf2f7;
-
-box-shadow:
-0 8px 30px rgba(0,0,0,0.04);
-
-transition:0.3s;
-}
-
-.summary-card:hover{
-transform:translateY(-5px);
-}
-
-.summary-icon{
-
-width:60px;
-height:60px;
-
-border-radius:18px;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-font-size:28px;
-
-margin-bottom:18px;
-}
-
-.green{
-background:#dcfce7;
-color:#16a34a;
-}
-
-.red{
-background:#fee2e2;
-color:#dc2626;
-}
-
-.blue{
-background:#dbeafe;
-color:#2563eb;
-}
-
-.purple{
-background:#ede9fe;
-color:#7c3aed;
-}
-
-.orange{
-background:#ffedd5;
-color:#ea580c;
-}
-
-.summary-card h3{
-font-size:15px;
-color:#64748b;
-margin-bottom:10px;
-}
-
-.summary-card p{
-
-font-size:30px;
-font-weight:700;
-
-color:#0f172a;
-}
-
-/* =========================
-CHART
-========================= */
-
-.chart-box{
-height:420px;
-}
-
-/* =========================
-TABLE
-========================= */
-
-.table-container{
-overflow:auto;
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-}
-
-thead{
-
-background:
-linear-gradient(
-135deg,
-#0f172a,
-#1e3a8a);
-
-}
-
-th{
-
-padding:16px;
-
-color:white;
-
-font-size:14px;
-
-text-align:left;
-}
-
-td{
-
-padding:16px;
-
-border-bottom:1px solid #edf2f7;
-
-font-size:14px;
-}
-
-tbody tr:hover{
-background:#f8fafc;
-}
-
-.badge-income{
-
-background:#dcfce7;
-
-color:#16a34a;
-
-padding:6px 12px;
-
-border-radius:10px;
-
-font-size:12px;
-font-weight:600;
-}
-
-.badge-expense{
-
-background:#fee2e2;
-
-color:#dc2626;
-
-padding:6px 12px;
-
-border-radius:10px;
-
-font-size:12px;
-font-weight:600;
-}
-
-/* =========================
-EXPORT
-========================= */
-
-.export-box{
-
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-gap:20px;
-flex-wrap:wrap;
-}
-
-.export-box p{
-color:#64748b;
-}
-
-.wa-btn{
-
-padding:16px 24px;
-
-border:none;
-
-border-radius:18px;
-
-background:
-linear-gradient(
-135deg,
-#0f172a,
-#111827);
-
-color:white;
-
-font-weight:600;
-
-cursor:pointer;
-
-transition:0.3s;
-}
-
-.wa-btn:hover{
-transform:translateY(-3px);
-}
-
-/* =========================
-FOOTER
-========================= */
-
-footer{
-
-margin-top:40px;
-
-background:
-linear-gradient(
-135deg,
-#020617,
-#0f172a);
-
-padding:50px 20px;
-
-text-align:center;
-
-color:white;
-}
-
-footer p{
-margin-top:10px;
-color:#94a3b8;
-}
-
-/* =========================
-MOBILE
-========================= */
-
-@media(max-width:768px){
-
-.hero{
-min-height:300px;
-}
-
-.brand{
-flex-direction:column;
-align-items:flex-start;
-}
-
-.brand-text h1{
-font-size:28px;
-}
-
-.summary-card p{
-font-size:22px;
-}
-
-.chart-box{
-height:300px;
-}
-
-.section-title h2{
-font-size:22px;
-}
-
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IM CREATIVE VISUAL - Finance Dashboard</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================
+        GLOBAL
+        ========================= */
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
+
+        body{
+            background:#f1f5f9;
+            color:#0f172a;
+            overflow-x:hidden;
+        }
+
+        /* =========================
+        HEADER
+        ========================= */
+        .hero{
+            position:relative;
+            width:100%;
+            min-height:360px;
+            background: linear-gradient(rgba(2,6,23,0.88), rgba(15,23,42,0.92));
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:30px;
+        }
+
+        .hero-content{
+            width:100%;
+            max-width:1350px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:20px;
+            flex-wrap:wrap;
+        }
+
+        .brand{
+            display:flex;
+            align-items:center;
+            gap:20px;
+        }
+
+        .brand-text h1{
+            font-size:42px;
+            font-weight:700;
+            color:white;
+            margin-bottom:6px;
+        }
+
+        .brand-text p{
+            color:#cbd5e1;
+            font-size:16px;
+        }
+
+        .header-right{
+            background:rgba(255,255,255,0.08);
+            padding:20px;
+            border-radius:24px;
+            backdrop-filter:blur(14px);
+            border:1px solid rgba(255,255,255,0.1);
+            min-width:280px;
+        }
+
+        .live-date{
+            display:flex;
+            flex-direction:column;
+            gap:12px;
+            margin-bottom:12px;
+        }
+
+        .date-box, .time-box{
+            background:rgba(255,255,255,0.08);
+            padding:12px 16px;
+            border-radius:16px;
+            color:white;
+            font-size:14px;
+            font-weight:600;
+        }
+
+        .header-right span{
+            color:#cbd5e1;
+            font-size:13px;
+        }
+
+        /* =========================
+        MAIN
+        ========================= */
+        main{
+            max-width:1350px;
+            margin:auto;
+            margin-top:-70px;
+            position:relative;
+            z-index:20;
+            padding:20px;
+        }
+
+        /* =========================
+        CARD
+        ========================= */
+        .card{
+            background:white;
+            padding:28px;
+            border-radius:28px;
+            margin-bottom:24px;
+            border:1px solid #e2e8f0;
+            box-shadow: 0 10px 40px rgba(15,23,42,0.05);
+        }
+
+        .section-title{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:24px;
+            flex-wrap:wrap;
+            gap:15px;
+        }
+
+        .section-title h2{
+            font-size:28px;
+            font-weight:700;
+        }
+
+        .badge{
+            background:#ede9fe;
+            color:#7c3aed;
+            padding:10px 16px;
+            border-radius:14px;
+            font-size:13px;
+            font-weight:600;
+        }
+
+        /* =========================
+        FORM
+        ========================= */
+        .form-grid{
+            display:grid;
+            grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+            gap:18px;
+        }
+
+        .input-group{
+            display:flex;
+            flex-direction:column;
+            gap:8px;
+        }
+
+        .input-group label{
+            font-size:14px;
+            font-weight:600;
+            color:#475569;
+        }
+
+        input, select{
+            width:100%;
+            padding:15px 16px;
+            border-radius:16px;
+            border:1px solid #dbe4f0;
+            background:#f8fafc;
+            font-size:15px;
+            transition:0.3s;
+        }
+
+        input:focus, select:focus{
+            outline:none;
+            border-color:#7c3aed;
+            background:white;
+            box-shadow: 0 0 0 4px rgba(124,58,237,0.12);
+        }
+
+        .save-btn{
+            width:100%;
+            padding:16px;
+            border:none;
+            border-radius:18px;
+            background: linear-gradient(135deg, #0f172a, #1d4ed8);
+            color:white;
+            font-size:15px;
+            font-weight:600;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        .save-btn:hover{
+            transform:translateY(-3px);
+        }
+
+        /* =========================
+        SUMMARY
+        ========================= */
+        .summary-grid{
+            display:grid;
+            grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+            gap:20px;
+            margin-bottom: 24px;
+        }
+
+        .summary-card{
+            background:white;
+            padding:25px;
+            border-radius:24px;
+            border:1px solid #edf2f7;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+            transition:0.3s;
+        }
+
+        .summary-card:hover{
+            transform:translateY(-5px);
+        }
+
+        .summary-icon{
+            width:60px;
+            height:60px;
+            border-radius:18px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:28px;
+            margin-bottom:18px;
+        }
+
+        .green{ background:#dcfce7; color:#16a34a; }
+        .red{ background:#fee2e2; color:#dc2626; }
+        .blue{ background:#dbeafe; color:#2563eb; }
+        .purple{ background:#ede9fe; color:#7c3aed; }
+        .orange{ background:#ffedd5; color:#ea580c; }
+
+        .summary-card h3{
+            font-size:15px;
+            color:#64748b;
+            margin-bottom:10px;
+        }
+
+        .summary-card p{
+            font-size:30px;
+            font-weight:700;
+            color:#0f172a;
+        }
+
+        /* =========================
+        CHART
+        ========================= */
+        .chart-box{
+            height:420px;
+        }
+
+        /* =========================
+        TABLE
+        ========================= */
+        .table-container{
+            overflow:auto;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+        }
+
+        thead{
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
+        }
+
+        th{
+            padding:16px;
+            color:white;
+            font-size:14px;
+            text-align:left;
+        }
+
+        td{
+            padding:16px;
+            border-bottom:1px solid #edf2f7;
+            font-size:14px;
+        }
+
+        tbody tr:hover{
+            background:#f8fafc;
+        }
+
+        .badge-income{
+            background:#dcfce7;
+            color:#16a34a;
+            padding:6px 12px;
+            border-radius:10px;
+            font-size:12px;
+            font-weight:600;
+        }
+
+        .badge-expense{
+            background:#fee2e2;
+            color:#dc2626;
+            padding:6px 12px;
+            border-radius:10px;
+            font-size:12px;
+            font-weight:600;
+        }
+
+        /* =========================
+        EXPORT
+        ========================= */
+        .export-box{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:20px;
+            flex-wrap:wrap;
+        }
+
+        .export-box p{
+            color:#64748b;
+        }
+
+        .wa-btn{
+            padding:16px 24px;
+            border:none;
+            border-radius:18px;
+            background: linear-gradient(135deg, #0f172a, #111827);
+            color:white;
+            font-weight:600;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        .wa-btn:hover{
+            transform:translateY(-3px);
+        }
+
+        /* =========================
+        FOOTER
+        ========================= */
+        footer{
+            margin-top:40px;
+            background: linear-gradient(135deg, #020617, #0f172a);
+            padding:50px 20px;
+            text-align:center;
+            color:white;
+        }
+
+        footer p{
+            margin-top:10px;
+            color:#94a3b8;
+        }
+
+        /* =========================
+        MOBILE
+        ========================= */
+        @media(max-width:768px){
+            .hero{ min-height:300px; }
+            .brand{ flex-direction:column; align-items:flex-start; }
+            .brand-text h1{ font-size:28px; }
+            .summary-card p{ font-size:22px; }
+            .chart-box{ height:300px; }
+            .section-title h2{ font-size:22px; }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- ======================
-HEADER
-====================== -->
-
-<section class="hero">
-
-<div class="hero-content">
-
-<div class="brand">
-
-<img src="1000487659.jpg" alt="Logo">
-
-<div class="brand-text">
-
-<h1>
-IM CREATIVE VISUAL
-</h1>
-
-<p>
-Aplikasi Administrasi Keuangan Profesional
-</p>
-
-</div>
-
-</div>
-
-<div class="header-right">
-
-<div class="live-date">
-
-<div class="date-box">
-📅
-<span id="todayDate"></span>
-</div>
-
-<div class="time-box">
-🕒
-<span id="liveClock"></span>
-</div>
-
-</div>
-
-<span>
-Dashboard Keuangan Bisnis
-</span>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ======================
-MAIN
-====================== -->
-
-<main>
-
-<!-- INPUT -->
-
-<section class="card">
-
-<div class="section-title">
-
-<h2>
-Input Transaksi
-</h2>
-
-<div class="badge">
-Finance Management
-</div>
-
-</div>
-
-<form id="financeForm">
-
-<div class="form-grid">
-
-<div class="input-group">
-
-<label>Tanggal</label>
-
-<input
-type="date"
-id="tanggal"
-required>
-
-</div>
-
-<div class="input-group">
-
-<label>Jenis</label>
-
-<select id="jenis">
-
-<option value="pemasukan">
-Pemasukan
-</option>
-
-<option value="pengeluaran">
-Pengeluaran
-</option>
-
-</select>
-
-</div>
-
-<div class="input-group">
-
-<label>Keterangan</label>
-
-<input
-type="text"
-id="keterangan"
-placeholder="Contoh: Penjualan Desain Logo"
-required>
-
-</div>
-
-<div class="input-group">
-
-<label>Jumlah Uang</label>
-
-<input
-type="number"
-id="jumlah"
-placeholder="Rp 0"
-required>
-
-</div>
-
-<div class="input-group">
-
-<label>HPP (Opsional)</label>
-
-<input
-type="number"
-id="hpp"
-placeholder="Rp 0">
-
-</div>
-
-<div class="input-group">
-
-<label>&nbsp;</label>
-
-<button
-class="save-btn"
-type="submit">
-
-Simpan Data
-
-</button>
-
-</div>
-
-</div>
-
-</form>
-
-</section>
-
-<!-- SUMMARY -->
-
-<section class="summary-grid">
-
-<div class="summary-card">
-
-<div class="summary-icon green">
-📈
-</div>
-
-<h3>Total Omset</h3>
-
-<p id="totalOmset">
-Rp 0
-</p>
-
-</div>
-
-<div class="summary-card">
-
-<div class="summary-icon red">
-📉
-</div>
-
-<h3>Total Pengeluaran</h3>
-
-<p id="totalPengeluaran">
-Rp 0
-</p>
-
-</div>
-
-<div class="summary-card">
-
-<div class="summary-icon blue">
-📦
-</div>
-
-<h3>Total HPP</h3>
-
-<p id="totalHPP">
-Rp 0
-</p>
-
-</div>
-
-<div class="summary-card">
-
-<div class="summary-icon purple">
-💰
-</div>
-
-<h3>Laba Bersih</h3>
-
-<p id="labaBersih">
-Rp 0
-</p>
-
-</div>
-
-<div class="summary-card">
-
-<div class="summary-icon orange">
-⚖️
-</div>
-
-<h3>Laba / Rugi</h3>
-
-<p id="labaRugi">
-Rp 0
-</p>
-
-</div>
-
-<div class="summary-card">
-
-<div class="summary-icon blue">
-🏦
-</div>
-
-<h3>Saldo Akhir</h3>
-
-<p id="saldoAkhir">
-Rp 0
-</p>
-
-</div>
-
-</section>
-
-<!-- CHART -->
-
-<section class="card">
-
-<div class="section-title">
-
-<h2>
-Grafik Hasil Penjualan
-</h2>
-
-<div class="badge">
-Realtime Sales Chart
-</div>
-
-</div>
-
-<div class="chart-box">
-
-<canvas id="salesChart"></canvas>
-
-</div>
-
-</section>
-
-<!-- TABLE -->
-
-<section class="card">
-
-<div class="section-title">
-
-<h2>
-Riwayat Transaksi
-</h2>
-
-<div class="badge">
-Realtime Data
-</div>
-
-</div>
-
-<div class="table-container">
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>Tanggal</th>
-<th>Jam</th>
-<th>Jenis</th>
-<th>Keterangan</th>
-<th>Jumlah</th>
-<th>HPP</th>
-<th>Status</th>
-
-</tr>
-
-</thead>
-
-<tbody id="tableBody"></tbody>
-
-</table>
-
-</div>
-
-</section>
-
-<!-- EXPORT -->
-
-<section class="card">
-
-<div class="export-box">
-
-<div>
-
-<h2>
-Export Laporan
-</h2>
-
-<p>
-Kirim laporan otomatis ke WhatsApp.
-</p>
-
-</div>
-
-<button
-class="wa-btn"
-onclick="exportWhatsApp()">
-
-Kirim Rekap WhatsApp
-
-</button>
-
-</div>
-
-</section>
-
-</main>
-
-<!-- ======================
-FOOTER
-====================== -->
-
-<footer>
-
-<h2>
-IM CREATIVE VISUAL
-</h2>
-
-<p>
-Solusi Desain Untuk UMKM & Brand Berkembang
-</p>
-
-</footer>
-
-<!-- ======================
-SCRIPT
-====================== -->
-
-<script>
-
-/* ======================
-DATE & CLOCK
-====================== */
-
-function updateDateTime(){
-
-const now = new Date();
-
-const currentDate =
-now.toLocaleDateString(
-"id-ID",
-{
-weekday:"long",
-day:"numeric",
-month:"long",
-year:"numeric"
-}
-);
-
-const currentTime =
-now.toLocaleTimeString(
-"id-ID",
-{
-hour:"2-digit",
-minute:"2-digit",
-second:"2-digit"
-}
-);
-
-document.getElementById("todayDate")
-.innerHTML = currentDate;
-
-document.getElementById("liveClock")
-.innerHTML = currentTime;
-
-}
-
-setInterval(updateDateTime,1000);
-
-updateDateTime();
-
-/* ======================
-DATA STORAGE
-====================== */
-
-const financeForm =
-document.getElementById("financeForm");
-
-const tableBody =
-document.getElementById("tableBody");
-
-let transactions =
-JSON.parse(
-localStorage.getItem("transactions")
-) || [];
-
-/* ======================
-FORM SUBMIT
-====================== */
-
-financeForm.addEventListener(
-"submit",
-function(e){
-
-e.preventDefault();
-
-const data = {
-
-tanggal:
-document.getElementById("tanggal").value,
-
-jam:
-new Date().toLocaleTimeString(
-"id-ID",
-{
-hour:"2-digit",
-minute:"2-digit"
-}
-),
-
-jenis:
-document.getElementById("jenis").value,
-
-keterangan:
-document.getElementById("keterangan").value,
-
-jumlah:
-parseInt(
-document.getElementById("jumlah").value
-),
-
-hpp:
-parseInt(
-document.getElementById("hpp").value
-) || 0
-
-};
-
-transactions.push(data);
-
-localStorage.setItem(
-"transactions",
-JSON.stringify(transactions)
-);
-
-financeForm.reset();
-
-renderTable();
-calculateSummary();
-renderChart();
-
-}
-);
-
-/* ======================
-TABLE
-====================== */
-
-function renderTable(){
-
-tableBody.innerHTML = "";
-
-if(transactions.length === 0){
-
-tableBody.innerHTML = `
-<tr>
-<td colspan="7"
-style="
-text-align:center;
-padding:30px;
-">
-Belum ada transaksi
-</td>
-</tr>
-`;
-
-return;
-
-}
-
-transactions.forEach(item=>{
-
-const status =
-item.jenis === "pemasukan"
-?
-'<span class="badge-income">Masuk</span>'
-:
-'<span class="badge-expense">Keluar</span>';
-
-tableBody.innerHTML += `
-
-<tr>
-
-<td>${item.tanggal}</td>
-
-<td>${item.jam}</td>
-
-<td>
-
-${
-item.jenis === "pemasukan"
-?
-'<span class="badge-income">Pemasukan</span>'
-:
-'<span class="badge-expense">Pengeluaran</span>'
-}
-
-</td>
-
-<td>${item.keterangan}</td>
-
-<td>
-Rp ${item.jumlah.toLocaleString()}
-</td>
-
-<td>
-Rp ${item.hpp.toLocaleString()}
-</td>
-
-<td>${status}</td>
-
-</tr>
-
-`;
-
-});
-
-}
-
-/* ======================
-SUMMARY
-====================== */
-
-function calculateSummary(){
-
-let omset = 0;
-let pengeluaran = 0;
-let totalHPP = 0;
-
-transactions.forEach(item=>{
-
-if(item.jenis === "pemasukan"){
-
-omset += item.jumlah;
-
-totalHPP += item.hpp;
-
-}else{
-
-pengeluaran += item.jumlah;
-
-}
-
-});
-
-const labaBersih =
-omset - pengeluaran - totalHPP;
-
-const saldoAkhir =
-omset - pengeluaran;
-
-document.getElementById("totalOmset")
-.innerText =
-"Rp " + omset.toLocaleString();
-
-document.getElementById("totalPengeluaran")
-.innerText =
-"Rp " + pengeluaran.toLocaleString();
-
-document.getElementById("totalHPP")
-.innerText =
-"Rp " + totalHPP.toLocaleString();
-
-document.getElementById("labaBersih")
-.innerText =
-"Rp " + labaBersih.toLocaleString();
-
-document.getElementById("labaRugi")
-.innerText =
-labaBersih >= 0
-?
-"Laba"
-:
-"Rugi";
-
-document.getElementById("saldoAkhir")
-.innerText =
-"Rp " + saldoAkhir.toLocaleString();
-
-}
-
-/* ======================
-CHART
-====================== */
-
-let chart;
-
-function renderChart(){
-
-const monthlyData = {};
-
-transactions.forEach(item=>{
-
-const month =
-item.tanggal.substring(0,7);
-
-if(!monthlyData[month]){
-
-monthlyData[month] = 0;
-
-}
-
-if(item.jenis==="pemasukan"){
-
-monthlyData[month] += item.jumlah;
-
-}
-
-});
-
-const labels =
-Object.keys(monthlyData);
-
-const data =
-Object.values(monthlyData);
-
-const ctx =
-document.getElementById("salesChart");
-
-if(chart){
-
-chart.destroy();
-
-}
-
-chart = new Chart(ctx,{
-
-type:'line',
-
-data:{
-
-labels:labels,
-
-datasets:[{
-
-label:'Hasil Penjualan',
-
-data:data,
-
-borderColor:'#7c3aed',
-
-backgroundColor:
-'rgba(124,58,237,0.15)',
-
-fill:true,
-
-tension:0.4,
-
-borderWidth:4,
-
-pointRadius:5,
-
-pointBackgroundColor:'#7c3aed'
-
-}]
-
-},
-
-options:{
-
-responsive:true,
-
-maintainAspectRatio:false
-
-}
-
-});
-
-}
-
-/* ======================
-EXPORT WHATSAPP
-====================== */
-
-function exportWhatsApp(){
-
-let omset = 0;
-let pengeluaran = 0;
-let totalHPP = 0;
-
-transactions.forEach(item=>{
-
-if(item.jenis==="pemasukan"){
-
-omset += item.jumlah;
-totalHPP += item.hpp;
-
-}else{
-
-pengeluaran += item.jumlah;
-
-}
-
-});
-
-const labaBersih =
-omset - pengeluaran - totalHPP;
-
-const saldoAkhir =
-omset - pengeluaran;
-
-const month =
-new Date().toLocaleString(
-"id-ID",
-{
-month:"long",
-year:"numeric"
-}
-);
-
-const text = `
-
-📊 REKAP KEUANGAN
-IM CREATIVE VISUAL
-
-📅 Bulan:
-${month}
-
-💰 Total Omset:
-Rp ${omset.toLocaleString()}
-
-📉 Total Pengeluaran:
-Rp ${pengeluaran.toLocaleString()}
-
-📦 Total HPP:
-Rp ${totalHPP.toLocaleString()}
-
-✅ Laba Bersih:
-Rp ${labaBersih.toLocaleString()}
-
-🏦 Saldo Akhir:
-Rp ${saldoAkhir.toLocaleString()}
-
-`;
-
-const url =
-`https://wa.me/?text=${
-encodeURIComponent(text)
-}`;
-
-window.open(url,"_blank");
-
-}
-
-/* ======================
-INITIAL LOAD
-====================== */
-
-renderTable();
-
-calculateSummary();
-
-renderChart();
-
-</script>
-
-</body>
-  </html>
+    <section class="hero">
+        <div class="hero-content">
+            <div class="brand">
+                <div class="brand-text">
+                    <h1>IM CREATIVE VISUAL</h1>
+                    <p>Aplikasi Administrasi Keuangan Profesional</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="live-date">
+                    <div class="date-box">📅 <span id="todayDate"></span></div>
+                    <div class="time-box">🕒 <span id="liveClock"></span></div>
+                </div>
+                <span>Dashboard Keuangan Bisnis</span>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <section class="card">
+            <div class="section-title">
+                <h2>Input Transaksi</h2>
+                <div class="badge">Finance Management</div>
+            </div>
+            <form id="financeForm">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label>Tanggal</label>
+                        <input type="date" id="tanggal" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Jenis</label>
+                        <select id="jenis">
+                            <option value="pemasukan">Pemasukan</option>
+                            <option value="pengeluaran">Pengeluaran</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Keterangan</label>
+                        <input type="text" id="keterangan" placeholder="Contoh: Penjualan Desain Logo" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Jumlah Uang</label>
+                        <input type="number" id="jumlah" placeholder="Rp 0" required>
+                    </div>
+                    <div class="input-group">
+                        <label>HPP (Opsional)</label>
+                        <input type="number" id="hpp" placeholder="Rp 0">
+                    </div>
+                    <div class="input-group">
+                        <label>&nbsp;</label>
+                        <button class="save-btn" type="submit">Simpan Data</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <section class="summary-grid">
+            <div class="summary-card">
+                <div class="summary-icon green">📈</div>
+                <h3>Total Omset</h3>
+                <p id="totalOmset">Rp 0</p>
+            </div>
+            <div class="summary-card">
+                <div class="summary-icon red">📉</div>
+                <h3>Total Pengeluaran</h3>
+                <p id="totalPengeluaran">Rp 0</p>
+            </div>
+            <div class="summary-card">
+                <div class="summary-icon blue">📦</div>
+                <h3>Total HPP</h3>
+                <p id="totalHPP">Rp 0</p>
+            </div>
+            <div class="summary-card">
+                <div class="summary-icon purple">💰</div>
+                <h3>Laba Bersih</h3>
+                <p id="labaBersih">Rp 0</p>
+            </div>
+            <div class="summary-card">
+                <div class="summary-icon orange">⚖️</div>
+                <h3>Laba / Rugi</h3>
+                <p id="labaRugi">-</p>
+            </div>
+            <div class="summary-card">
+                <div class="summary-icon blue">🏦</div>
+                <h3>Saldo Akhir</h3>
+                <p id="saldoAkhir">Rp 0</p>
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="section-title">
+                <h2>Grafik Hasil Penjualan</h2>
+                <div class="badge">Realtime Sales Chart</div>
+            </div>
+            <div class="chart-box">
+                <canvas id="salesChart"></canvas>
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="section-title">
+                <h2>Riwayat Transaksi</h2>
+                <div class="badge">Realtime Data</div>
+            </div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tanggal</th>
+                            <th>Jam</th>
+                            <th>Jenis</th>
+                            <th>Keterangan</th>
+                            <th>Jumlah</th>
+                            <th>HPP</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="export-box">
+                <div>
+                    <h2>Export Laporan</h2>
+                    <p>Kirim laporan otomatis ke WhatsApp.</p>
+                </div>
+                <button class="wa-btn" onclick="exportWhatsApp()">Kirim Rekap WhatsApp</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <h2>IM CREATIVE VISUAL</h2>
+        <p>Solusi Desain Untuk UMKM & Brand Berkembang</p>
+    </footer>
+
+    <script>
+        /* ======================
+        DATE & CLOCK
+        ====================== */
+        function updateDateTime(){
+            const now = new Date();
+            const currentDate = now.toLocaleDateString("id-ID", {
+                weekday:"long", day:"numeric", month:"long", year:"numeric"
+            });
+            const currentTime = now.toLocaleTimeString("id-ID", {
+                hour:"2-digit", minute:"2-digit", second:"2-digit"
+            });
+            document.getElementById("todayDate").innerHTML = currentDate;
+            document.getElementById("liveClock").innerHTML = currentTime;
+        }
+        setInterval(updateDateTime,1000);
+        updateDateTime();
+
+        /* ======================
+        DATA STORAGE (WITH SIMULATED DEFAULT DATA)
+        ====================== */
+        const financeForm = document.getElementById("financeForm");
+        const tableBody = document.getElementById("tableBody");
+
+        // Data dummy awal agar grafik dan angka tidak kosong saat pertama kali dijalankan
+        const dummyData = [
+            { tanggal: "2026-01-10", jam: "10:00", jenis: "pemasukan", keterangan: "Project Desain Feed Instagram", jumlah: 1500000, hpp: 200000 },
+            { tanggal: "2026-02-15", jam: "14:20", jenis: "pemasukan", keterangan: "Branding & Logo UMKM", jumlah: 3500000, hpp: 500000 },
+            { tanggal: "2026-03-05", jam: "09:15", jenis: "pengeluaran", keterangan: "Bayar Berlangganan Adobe CC", jumlah: 750000, hpp: 0 },
+            { tanggal: "2026-04-12", jam: "11:30", jenis: "pemasukan", keterangan: "Desain Website Company Profile", jumlah: 6000000, hpp: 1000000 },
+            { tanggal: "2026-05-20", jam: "16:45", jenis: "pengeluaran", keterangan: "Biaya Marketing/Iklan Medsos", jumlah: 1200000, hpp: 0 }
+        ];
+
+        // Jika localStorage kosong, isi dengan dummyData agar langsung terlihat nilainya
+        if (!localStorage.getItem("transactions")) {
+            localStorage.setItem("transactions", JSON.stringify(dummyData));
+        }
+
+        let transactions = JSON.parse(localStorage.getItem("transactions"));
+
+        /* ======================
+        FORM SUBMIT
+        ====================== */
+        financeForm.addEventListener("submit", function(e){
+            e.preventDefault();
+
+            const data = {
+                tanggal: document.getElementById("tanggal").value,
+                jam: new Date().toLocaleTimeString("id-ID", { hour:"2-digit", minute:"2-digit" }),
+                jenis: document.getElementById("jenis").value,
+                keterangan: document.getElementById("keterangan").value,
+                jumlah: parseInt(document.getElementById("jumlah").value),
+                hpp: parseInt(document.getElementById("hpp").value) || 0
+            };
+
+            transactions.push(data);
+            localStorage.setItem("transactions", JSON.stringify(transactions));
+            financeForm.reset();
+
+            renderTable();
+            calculateSummary();
+            renderChart();
+        });
+
+        /* ======================
+        RENDER TABLE
+        ====================== */
+        function renderTable(){
+            tableBody.innerHTML = "";
+
+            if(transactions.length === 0){
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="7" style="text-align:center; padding:30px;">Belum ada transaksi</td>
+                    </tr>`;
+                return;
+            }
+
+            // Urutkan berdasarkan tanggal terbaru
+            const sortedTransactions = [...transactions].sort((a,b) => new Date(b.tanggal) - new Date(a.tanggal));
+
+            sortedTransactions.forEach(item => {
+                const isPemasukan = item.jenis === "pemasukan";
+                const statusBadge = isPemasukan ? '<span class="badge-income">Masuk</span>' : '<span class="badge-expense">Keluar</span>';
+                const jenisText = isPemasukan ? 'Pemasukan' : 'Pengeluaran';
+
+                tableBody.innerHTML += `
+                    <tr>
+                        <td>${item.tanggal}</td>
+                        <td>${item.jam}</td>
+                        <td><span class="${isPemasukan ? 'badge-income' : 'badge-expense'}">${jenisText}</span></td>
+                        <td>${item.keterangan}</td>
+                        <td>Rp ${item.jumlah.toLocaleString('id-ID')}</td>
+                        <td>Rp ${item.hpp.toLocaleString('id-ID')}</td>
+                        <td>${statusBadge}</td>
+                    </tr>`;
+            });
+        }
+
+        /* ======================
+        CALCULATE SUMMARY
+        ====================== */
+        function calculateSummary(){
+            let omset = 0;
+            let pengeluaran = 0;
+            let totalHPP = 0;
+
+            transactions.forEach(item => {
+                if(item.jenis === "pemasukan"){
+                    omset += item.jumlah;
+                    totalHPP += item.hpp;
+                } else {
+                    pengeluaran += item.jumlah;
+                }
+            });
+
+            const labaBersih = omset - pengeluaran - totalHPP;
+            const saldoAkhir = omset - pengeluaran;
+
+            document.getElementById("totalOmset").innerText = "Rp " + omset.toLocaleString('id-ID');
+            document.getElementById("totalPengeluaran").innerText = "Rp " + pengeluaran.toLocaleString('id-ID');
+            document.getElementById("totalHPP").innerText = "Rp " + totalHPP.toLocaleString('id-ID');
+            document.getElementById("labaBersih").innerText = "Rp " + labaBersih.toLocaleString('id-ID');
+            
+            con
